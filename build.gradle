@@ -7,11 +7,16 @@ dependencies {
 publishing {
   repositories {
     maven {
-      name = "GitHubPackages"
-      url = "https://maven.pkg.github.com/maths22/sqlite-jdbc-signed"
+      name = "fury"
+      url = "https://maven.fury.io/maths22/"
+
+      authentication {
+        basic(BasicAuthentication)
+      }
+
       credentials {
-        username = System.getenv("GITHUB_ACTOR")
-        password = System.getenv("GITHUB_TOKEN")
+        username = System.getenv("GEMFURY_TOKEN")
+        password = "NOPASS"
       }
     }
   }

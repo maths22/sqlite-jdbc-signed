@@ -11,9 +11,6 @@ on:
 jobs:
   build:
     runs-on: macos-latest
-    permissions:
-      contents: read
-      packages: write
     steps:
     - uses: actions/checkout@v3
     - uses: robinraju/release-downloader@v1.7
@@ -68,7 +65,7 @@ jobs:
       uses: gradle/gradle-build-action@v2
       env:
         VERSION: ${{ inputs.upstreamTag }}
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GEMFURY_TOKEN: ${{ secrets.GEMFURY_TOKEN }}
       with:
         arguments: publish
 
