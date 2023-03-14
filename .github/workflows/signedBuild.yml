@@ -57,7 +57,6 @@ jobs:
         rm -rf extracted
         mv $SQLITE_JAR sqlite.jar
 
-
     - uses: actions/setup-java@v3
       with:
         distribution: coretto
@@ -66,6 +65,7 @@ jobs:
     - name: Setup and execute Gradle 'publish' task
       uses: gradle/gradle-build-action@v2
       env:
+        VERSION: ${{ inputs.upstreamTag }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         arguments: publish

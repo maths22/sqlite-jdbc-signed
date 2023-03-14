@@ -19,7 +19,7 @@ publishing {
       maven(MavenPublication) {
           groupId "com.maths22"
           artifactId "sqlite-jdbc-signed"
-          version "1.0"
+          version System.getenv("input.upstreamTag")
           artifact ("./sqlite.jar")
       }
   }
