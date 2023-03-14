@@ -45,10 +45,9 @@ jobs:
         security import $CERTIFICATE_PATH -P "$P12_PASSWORD" -A -t cert -f pkcs12 -k $KEYCHAIN_PATH
         security list-keychain -d user -s $KEYCHAIN_PATH
 
-        security find-identity -v
-        echo $DEVELOPER_ID
-
     - name: Sign macOS native libs
+      env:
+        DEVELOPER_ID: ${{ vars.DEVELOPER_ID }}
       run: |
         export SQLITE_JAR=$(find . -name "sqlite-jdbc-*.jar")
         unzip $SQLITE_JAR -d extracted
