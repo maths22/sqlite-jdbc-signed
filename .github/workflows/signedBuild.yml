@@ -61,7 +61,7 @@ jobs:
 
     - uses: actions/setup-java@v3
       with:
-        distribution: coretto
+        distribution: corretto
         java-version: 17
     
     - name: Setup and execute Gradle 'publish' task
