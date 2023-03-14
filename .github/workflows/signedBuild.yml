@@ -47,7 +47,7 @@ jobs:
 
     - name: Sign macOS native libs
       run: |
-        export SQLITE_JAR=$(find . -name "org.xerial.sqlite-jdbc-*.jar")
+        export SQLITE_JAR=$(find . -name "sqlite-jdbc-*.jar")
         unzip $SQLITE_JAR -d extracted
         cd extracted
         find . -type f -name "*.jnilib" | xargs codesign -s "$DEVELOPER_ID" -v -f
