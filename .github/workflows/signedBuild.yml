@@ -6,7 +6,6 @@ on:
       upstreamTag:
         description: 'Upstream Tag'
         type: string
-        default: 'default'
         required: true
 
 jobs:
@@ -20,7 +19,7 @@ jobs:
     - uses: robinraju/release-downloader@v1.7
       with: 
         repository: xerial/sqlite-jdbc
-        tag: "${{ github.events.inputs.upstreamTag }}"
+        tag: "${{ inputs.upstreamTag }}"
         fileName: "*.jar"
         tarBall: false
         zipBall: false
