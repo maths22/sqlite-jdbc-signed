@@ -1,0 +1,26 @@
+apply plugin: "maven-publish"
+apply plugin: "java"
+
+dependencies {
+}
+
+publishing {
+  repositories {
+    maven {
+      name = "GitHubPackages"
+      url = "https://maven.pkg.github.com/maths22/sqlite-jdbc-signed"
+      credentials {
+        username = System.getenv("GITHUB_ACTOR")
+        password = System.getenv("GITHUB_TOKEN")
+      }
+    }
+  }
+  publications {
+      maven(MavenPublication) {
+          groupId "com.maths22"
+          artifactId "sqlite-jdbc-signed"
+          version "1.0"
+          artifact ("./sqlite.jar")
+      }
+  }
+}
