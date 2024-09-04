@@ -49,9 +49,9 @@ jobs:
         export SQLITE_JAR=$(find . -name "sqlite-jdbc-*.jar")
         unzip $SQLITE_JAR -d extracted
         cd extracted
-        find . -type f -name "*.jnilib" | xargs codesign -s "$DEVELOPER_ID" -v -f
+        find . -type f -name "*.dylib" | xargs codesign -s "$DEVELOPER_ID" -v -f
         # https://docs.oracle.com/javase/tutorial/deployment/jar/update.html
-        find . -type f -name "*.jnilib" | xargs jar -ufv "../$SQLITE_JAR"
+        find . -type f -name "*.dylib" | xargs jar -ufv "../$SQLITE_JAR"
         cd ..
         rm -rf extracted
         mv $SQLITE_JAR sqlite.jar
